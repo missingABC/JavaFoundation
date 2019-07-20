@@ -16,5 +16,8 @@ sortedset:排序的set
 	discard回滚事务
 	exec执行事务
 
+redis持久化
+	EDB（快照）和AOF（日志记录）
+
 
 
