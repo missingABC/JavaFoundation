@@ -1,0 +1,20 @@
+redis数据类型
+
+Sring: 存set   取get  删del		增 incrby num
+hash:  存hset  取hget 删hel 和del 增hincrby num
+list:  存lpush rpush  弹（删）lpop rpop[注意顺序，和栈一样]
+	   （左）插入 linsert mylist before a b #在key为mylist的list中的a元素之前插入b
+	   替换lset mylist a b 
+set: 存sadd  删srem  查所有smembers myset 
+	集合间运算：差sdiff 并sunion 交sinter
+sortedset:排序的set
+	增zadd  删zrem
+	
+	dbsize  select1  flushdb删除当前数据库所有key flushall 删除所有数据库的keys
+	
+	multi开启事务
+	discard回滚事务
+	exec执行事务
+
+
+
