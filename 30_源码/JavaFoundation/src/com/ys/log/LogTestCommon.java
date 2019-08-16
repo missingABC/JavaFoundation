@@ -15,6 +15,7 @@ public class LogTestCommon {
 		log.debug("125");
 		log.debug("485");
 		log.debug("error");
+		
 	}
 	public static void main(String[] args) {
 		LogTestCommon.test();

@@ -1,14 +1,11 @@
 package com.zzy.redis;
 
-import static org.hamcrest.CoreMatchers.nullValue;
-
-import javax.security.auth.login.Configuration;
+import java.util.Iterator;
+import java.util.Set;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
-
-import com.ys.log.LogTestCommon;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
@@ -16,19 +13,34 @@ import redis.clients.jedis.JedisPoolConfig;
 
 public class RedisTest {
 	public static Log log = LogFactory.getLog(RedisTest.class);
-	//@Test
+	@Test
 	public void testJedisSingle() {
 		//设置IP地址和端口
-		Jedis jedis = new Jedis("192.168.43.156",6379);
+//		Jedis jedis = new Jedis("192.168.43.156",6379);
+		Jedis jedis = new Jedis("127.0.0.1",6379);
 		//设置数据
-		jedis.set("ID", "4102211994");
+		//jedis.set("ID", "4102211994");
 		//获得数据
-		String id = jedis.get("ID");
-		System.out.println("id:"+id);
+		System.out.println(jedis.dbSize());
+		jedis.flushAll();
+		System.out.println(jedis.dbSize());
+		//String id = jedis.get("ID");
+		//System.out.println("id:"+id);
 		jedis.close();
 		
 	}
-	@Test
+	private void batchDel(Jedis jedis){
+		Set<String> set = jedis.keys(pre_str +"*");
+		Iterator<String> it = set.iterator();
+		while(it.hasNext()){
+			String keyStr = it.next();
+			System.out.println(keyStr);
+			jedis.del(keyStr);
+		}
+	}
+
+
+	//@Test
 	public void testJedisPool() {
 		//获得连接池配置对象，设置配置项
 		JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
