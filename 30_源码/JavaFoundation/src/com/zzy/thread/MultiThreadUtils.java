@@ -10,17 +10,15 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.apache.log4j.spi.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import com.ys.log.LogTestCommon;
 
 
 
 
 public class MultiThreadUtils<T> {
-    private static Log logger = LogFactory.getLog(MultiThreadUtils.class);
+	 private static Logger logger = LoggerFactory.getLogger(MultiThreadUtils.class);
   
 
     // 线程个数，如不赋值，默认为5

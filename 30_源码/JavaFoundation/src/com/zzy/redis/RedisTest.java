@@ -30,6 +30,7 @@ public class RedisTest {
 		
 	}
 	private void batchDel(Jedis jedis){
+		String pre_str = "organ_user";
 		Set<String> set = jedis.keys(pre_str +"*");
 		Iterator<String> it = set.iterator();
 		while(it.hasNext()){

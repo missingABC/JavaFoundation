@@ -5,15 +5,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Callable;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @SuppressWarnings("rawtypes")
 public class HandleCallable<E> implements Callable<ResultBean> {
-    //private static Log logger = LogFactory.getLog(HandleCallable.class);
-    public static Log log = LogFactory.getLog(HandleCallable.class);
+    private static Logger logger = LoggerFactory.getLogger(HandleCallable.class);
     /*private static final String format = "线程：%s,共处理: %s个数据，开始处理......";
     private static final String format1 = "线程：%s,第%s个数据，处理完成";
     private static final String format2 = "线程：%s,共处理: %s个数据，处理完成......";
@@ -41,7 +38,7 @@ public class HandleCallable<E> implements Callable<ResultBean> {
         // 该线程中所有数据处理返回结果
         ResultBean<List<ResultBean<String>>> resultBean = ResultBean.newInstance();
         if (data != null && data.size() > 0) {
-            log.info("线程：{},共处理:{}个数据，开始处理......", threadName, data.size());
+            logger.info("线程：{},共处理:{}个数据，开始处理......", threadName, data.size());
             // 返回结果集
             List<ResultBean<String>> resultList = new ArrayList<>();
             // 循环处理每个数据
@@ -50,8 +47,7 @@ public class HandleCallable<E> implements Callable<ResultBean> {
                 E e = data.get(i);
                 // 将数据执行结果加入到结果集中
                 resultList.add(task.execute(e, params));
-                log.info("线程：{},第{}个数据，处理完成", threadName, (i + 1));
-               
+                logger.info("线程：{},第{}个数据，处理完成", threadName, (i + 1));
             }
             logger.info("线程：{},共处理:{}个数据，处理完成......", threadName, data.size());
             resultBean.setData(resultList);

@@ -146,7 +146,7 @@ public class ResultBean<T> implements Serializable {
         return remark;  
     }  
     
-    public String json(){
-        return JSON.toJSONString(this);
-    }
+	/*
+	 * public String json(){ return JSON.toJSONString(this); }
+	 */
 }
