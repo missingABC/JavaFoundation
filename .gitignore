@@ -1,0 +1,6 @@
+30_源码/JavaFoundation/.classpath
+*.classpath
+30_源码/JavaFoundation/.project
+30_源码/JavaFoundation/.settings/
+*.class
+30_源码/JavaFoundation/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF

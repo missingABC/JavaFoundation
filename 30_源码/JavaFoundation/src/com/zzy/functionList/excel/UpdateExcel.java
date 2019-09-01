@@ -51,7 +51,7 @@ public class UpdateExcel {
         } finally {  
             try {  
                 book.close();  
-            } catch (IOException e) {  
+            } catch (IOException | WriteException e) {  
                 e.printStackTrace();  
             }  
         }  
