@@ -10,6 +10,7 @@ import org.apache.log4j.Logger;
 import jxl.Sheet;
 import jxl.Workbook;
 import jxl.read.biff.BiffException;
+import jxl.write.WritableWorkbook;
 /**
  * 读取excel文件
  * jxl只识别xls文件，不识别xlsx文件，否则会报BifferException- Unable to recognize OLE stream
@@ -20,7 +21,7 @@ public class GetExcelInfo {
 	public static Logger logger = Logger.getLogger(GetExcelInfo.class);
 	public static void main(String[] args) {
 		GetExcelInfo getExcelInfo = new GetExcelInfo();
-		File file = new File("C:\\Users\\Administrator\\Desktop\\法院代码.xls");
+		File file = new File("C:\\Users\\huayu\\Desktop\\aa.xls");
 		getExcelInfo.readExcel(file);
 	}
 	public void readExcel(File file) {
